@@ -1,0 +1,13 @@
+save_models
+wandb
+!data/wandb
+tmp
+__pycache__
+.history
+apptainer.zip
+ree
+test.npz
+test.pkl
+*.sif
+.vscode
+site
