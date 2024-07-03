@@ -16,7 +16,6 @@ def init_wandb(exp_name: str, config: Dict[str, Any], project_name: str, group_n
         sync_tensorboard=True,  # auto-upload sb3's tensorboard metrics
         monitor_gym=True,  # auto-upload the videos of agents playing the game
         save_code=True,
-        entity="wits-fc",
     )
     # Properly sets up wandb
     run_id = f"{exp_name}_1"

@@ -41,7 +41,7 @@ def run_experiment(
     n_env_procs=1,
     init_checkpoint: str = None,
     force_device: torch.device = None,
-    wandb_project_name: str = "Robocup_Kick_2024",
+    wandb_project_name: str = "RobocupGym_Test",
     vec_env_class=SubprocVecEnv,
     start_idx: int = 0,
     make_vec_env_kwargs={},

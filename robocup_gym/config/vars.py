@@ -16,12 +16,12 @@ BASH_SCRIPT_LOCATION = os.path.join(ROBOCUP_GYM_ROOT, "robocup_gym", "scripts", 
 
 
 # Uncomment these if you do not use singularity
-# RCSSSERVER_SCRIPT_LOCATION = os.path.join(KUDU_GYM_ROOT, "scripts", "rcssserver.sh")
+# RCSSSERVER_SCRIPT_LOCATION = os.path.join(ROBOCUP_GYM_ROOT, "scripts", "rcssserver.sh")
 
 
 EXPORT_ENV_DIRECTORY = os.path.join(ROBOCUP_GYM_ROOT, "robocup_gym", "rl_env_configs")
 
 
-CONDA_ENV_NAME = "kudu_gym"
+CONDA_ENV_NAME = "robocup"
 SLURM_DIR = os.path.join("artifacts", "slurms")
 LOG_DIR = os.path.join("artifacts", "logs")

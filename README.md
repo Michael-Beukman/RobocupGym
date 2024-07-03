@@ -30,10 +30,10 @@ This is a project for training low-level RL skills in the Robocup 3D simulation 
     - [RCSSServer3D](#rcssserver3d)
     - [BaseRLLoop](#baserlloop)
   - [📖 Docs](#-docs)
-    - [kudu\_gym/envs/base\_env.py](#kudu_gymenvsbase_envpy)
-    - [kudu\_gym/envs/configs/env\_config.py](#kudu_gymenvsconfigsenv_configpy)
-    - [kudu\_gym/infra/player.py](#kudu_gyminfraplayerpy)
-    - [kudu\_gym/infra/raw/direct\_server\_connection.py](#kudu_gyminfrarawdirect_server_connectionpy)
+    - [robocup\_gym/envs/base\_env.py](#robocup_gymenvsbase_envpy)
+    - [robocup\_gym/envs/configs/env\_config.py](#robocup_gymenvsconfigsenv_configpy)
+    - [robocup\_gym/infra/player.py](#robocup_gyminfraplayerpy)
+    - [robocup\_gym/infra/raw/direct\_server\_connection.py](#robocup_gyminfrarawdirect_server_connectionpy)
   - [🔎 Tips And Tricks](#-tips-and-tricks)
   - [📚 Other Projects Used \& Inspiration](#-other-projects-used--inspiration)
   - [👷 Contribution](#-contribution)
@@ -47,7 +47,7 @@ This is a project for training low-level RL skills in the Robocup 3D simulation 
 First install [singularity (aka apptainer)](https://apptainer.org); on ubuntu you can follow the instructions [here](https://apptainer.org/docs/admin/main/installation.html#install-debian-packages).
 
 ### 2. Container
-Download the zip file [here](https://lamp.ms.wits.ac.za/kudu_gym/apptainer.zip), unzip it and put the `apptainer` folder in the `robocup_gym` directory.
+Download the zip file [here](https://lamp.ms.wits.ac.za/robocup_gym/apptainer.zip), unzip it and put the `apptainer` folder in the `robocup_gym` directory.
 
 ### 3. Python Environment
 ```
@@ -64,19 +64,19 @@ pip install -r requirements.txt
 > We also use wandb to log aspects of training. Run `wandb login` to log in before running any training.
 
 > [!IMPORTANT]  
-> **Also, Use `./run.sh` from the `kudu_gym` directory to run any files instead of `python` directly**
+> **Also, Use `./run.sh` from the repository root directory to run any files instead of `python` directly**
 
 
 ### 4. Testing the configuration
 To test if the configuration is properly set up, run the following:
 
 ```bash
-./run.sh test/test_configs/is_rcssserver_working.py
+./run.sh robocup_gym/test/test_configs/is_rcssserver_working.py
 ```
 If you see `[Success], RCSSServer Started Successfully`, it is working.
 
 ```bash
-./run.sh test/test_configs/is_environment_working.py
+./run.sh robocup_gym/test/test_configs/is_environment_working.py
 ```
 If you see `[Success] The environment seems to work`, then everything should be working.
 
@@ -94,7 +94,7 @@ Simply run the following to start a PPO agent on a simple kick task. You can mod
 ## ➕ Usage - Your Own Tasks
 To use the code to run your own tasks, you need to do the following:
 ### 1. Create a task, i.e., a particular environment that has a reward function
-For instance, create a file `envs/tasks/env_simple_kick.py` with the following code:
+For instance, create a file `robocup_gym/envs/tasks/env_simple_kick.py` with the following code:
 ```python
 from robocup_gym.rl.envs.base_env import BaseEnv
 import numpy as np
@@ -104,7 +104,7 @@ class EnvSimpleKick(BaseEnv):
         return np.linalg.norm(np.array(self.python_agent_conn.player.real_ball_pos) - np.array(self.env_config.ball_start_pos))
 ```
 ### 2. Create a main, runner file
-For instance, paste the following code in `experiments/hello_world.py`
+For instance, paste the following code in `robocup_gym/experiments/hello_world.py`
 ```python
 import os
 import time
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 ### 3. Run the code
 Run the following command:
 ```bash
-./run.sh experiments/hello_world.py
+./run.sh robocup_gym/experiments/hello_world.py
 ```
 
 Then you should have a model training now!
@@ -199,9 +199,9 @@ Docs here, or click <a href="https://michaelbeukman.com/code/robocupgym">here</a
 
 The following classes/files are the most important ones. You would not need to change these at all to just use the library, but knowing how they work is important to understand how to use the library.
 
-### kudu_gym/envs/base_env.py
+### robocup_gym/envs/base_env.py
 This is the main Environment class that all tasks must inherit from. It follows the [standard gymnasium API](https://gymnasium.farama.org/). It also starts the RCSSServer3D and AgentSpark processes upon construction.
-### kudu_gym/envs/configs/env_config.py
+### robocup_gym/envs/configs/env_config.py
 This is the way you configure the environment. This class, for instance, contains defines aspects such as:
 - The observation space; i.e., what information the agent can see.
 - The action space; i.e., what joints the agent can alter, and what form the actions take.
@@ -209,7 +209,7 @@ This is the way you configure the environment. This class, for instance, contain
 - Several other options, such as the number of steps per episode, how many frames should be stacked, and whether observations should be normalised.
 
 
-We have provided a default configuration in `kudu_gym/envs/configs/default.py`. Generally, we recommend doing the following in an experiment:
+We have provided a default configuration in `robocup_gym/envs/configs/default.py`. Generally, we recommend doing the following in an experiment:
 ```python
 from robocup_gym.rl.envs.configs.default import create_good_minimal_config
 
@@ -222,14 +222,14 @@ conf.options.max_number_of_timesteps = 50
 run_experiment('<ID>', <ENV>, env_kwargs={'env_config':conf})
 ```
 
-### kudu_gym/infra/player.py
+### robocup_gym/infra/player.py
 This class contains information about the agent, such as its joint positions, etc. This information can be useful in calculating an appropriate reward. In an environment class, one can access it using as follows:
 ```python
 player: Player = self.python_agent_conn.player
 # Now we can access properties such as player.rightShoulderYaw, etc.
 ```
 See the class for more information about which fields are accessible.
-### kudu_gym/infra/raw/direct_server_connection.py
+### robocup_gym/infra/raw/direct_server_connection.py
 This class is the main interface between the Python code and the server.
 
 
