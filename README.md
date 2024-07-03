@@ -1,4 +1,4 @@
-# 🏋️ 🤖 Robocup Gym
+# 🏋️ 🤖 Robocup Gym ⚽
 <p align="center">
 <a href="#how-it-works">How it Works</a> &mdash; <a href="#tl-dr">Get Started</a> &mdash; <a href="#how-to-use-it">Training</a> &mdash; <a href="#how-to-integrate-a-model-into-the-c-codebase-for-use-in-a-game">Integration</a>  &mdash; <a href="#docs">Docs</a> 
 </p>
@@ -11,7 +11,7 @@ This is a project for training low-level RL skills in the Robocup 3D simulation 
 
 <details><summary><strong>Table of Contents</strong></summary>
 
-- [🏋️ 🤖 Robocup Gym](#️--robocup-gym)
+- [🏋️ 🤖 Robocup Gym ⚽](#️--robocup-gym-)
   - [⬇️ Installation](#️-installation)
     - [1. Singularity/Apptainer](#1-singularityapptainer)
     - [2. Container](#2-container)
