@@ -47,7 +47,7 @@ This is a project for training low-level RL skills in the Robocup 3D simulation 
 First install [singularity (aka apptainer)](https://apptainer.org); on ubuntu you can follow the instructions [here](https://apptainer.org/docs/admin/main/installation.html#install-debian-packages).
 
 ### 2. Container
-Download the zip file [here](https://lamp.ms.wits.ac.za/robocup_gym/apptainer.zip), unzip it and put the `apptainer` folder in the `robocup_gym` directory.
+Download the zip file [here](https://lamp.ms.wits.ac.za/robocup_gym/apptainer.tgz), extract it and put the `apptainer` folder in the `robocup_gym` directory.
 
 ### 3. Python Environment
 ```
