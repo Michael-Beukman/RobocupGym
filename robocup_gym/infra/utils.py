@@ -30,10 +30,9 @@ def path(*paths: List[str], mk: bool = True) -> str:
 
 def killall(sleep=1):
     """
-    This kills rcssserver3d and agentspark processes.
+    This kills rcssserver3d processes.
     """
     os.system("killall -9 rcssserver3d")
-    os.system("killall -9 agentspark")
     time.sleep(sleep)
 
 
