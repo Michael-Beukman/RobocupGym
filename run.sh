@@ -1,2 +1,2 @@
-export PYTHONPATH=`pwd`/../../:$PYTHONPATH
+export PYTHONPATH=`pwd`:$PYTHONPATH
 python -u "$@"
