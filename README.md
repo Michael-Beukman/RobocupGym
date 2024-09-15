@@ -115,7 +115,6 @@ from robocup_gym.rl.envs.tasks.env_simple_kick import EnvSimpleKick
 
 def main():
     os.system("killall -9 rcssserver3d")
-    os.system("killall -9 agentspark")
     time.sleep(1)
     run_experiment('a000000', EnvSimpleKick, env_kwargs={'env_config':DefaultConfig})
 
@@ -200,7 +199,7 @@ Docs here, or click <a href="https://michaelbeukman.com/code/robocupgym">here</a
 The following classes/files are the most important ones. You would not need to change these at all to just use the library, but knowing how they work is important to understand how to use the library.
 
 ### robocup_gym/envs/base_env.py
-This is the main Environment class that all tasks must inherit from. It follows the [standard gymnasium API](https://gymnasium.farama.org/). It also starts the RCSSServer3D and AgentSpark processes upon construction.
+This is the main Environment class that all tasks must inherit from. It follows the [standard gymnasium API](https://gymnasium.farama.org/). It also starts the RCSSServer3D processes upon construction.
 ### robocup_gym/envs/configs/env_config.py
 This is the way you configure the environment. This class, for instance, contains defines aspects such as:
 - The observation space; i.e., what information the agent can see.
